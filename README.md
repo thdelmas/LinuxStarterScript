@@ -1,3 +1,3 @@
-# Pimp uniX
+# Pimp X
 
-How to automate post-installation stuff on unix
+How Pimp X 
