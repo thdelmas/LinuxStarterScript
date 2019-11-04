@@ -1,2 +1,3 @@
-# LinuxStarterScript
-How to automate post-installation stuff on debian
+# Pimp uniX
+
+How to automate post-installation stuff on unix
