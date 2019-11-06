@@ -3,8 +3,14 @@ git_prompt () {
 }
 
 px_set_prompt () {
-
-export PS1="\u@\h|\w [$?] (`git_prompt`)\n"
+RESET='\033[0m'
+export PS1="\u@\h|\w [$?] "
+if [ "$(git status | grep 'Your branch is up to date')" ]
+	then
+	export PS1="$PS1(\033[31m`git_prompt`$RESET)\n> "
+	else
+	export PS1="$PS1(\033[32m`git_prompt`$RESET)\n> "
+	fi
 }
 
 px_choose_shell () {
