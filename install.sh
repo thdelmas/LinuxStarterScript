@@ -1,4 +1,11 @@
-#!/bin/sh
+git_prompt () {
+	echo `git branch -a | cat | grep '\*' | cut -d' ' -f2`
+}
+
+px_set_prompt () {
+
+export PS1="\u@\h|\w [$?] (`git_prompt`)\n"
+}
 
 px_choose_shell () {
 
@@ -31,6 +38,6 @@ cat <<-EOF
 
 EOF
 
-px_choose_shell
+px_set_prompt
 
 echo "PimpX: Installation ended"
