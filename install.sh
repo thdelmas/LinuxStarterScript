@@ -105,7 +105,7 @@ then
 	echo "Pimpx aleredy installed :)"
 else
 	echo "Installing PimpX here: $PIMPX"
-	if [ "$(git --version | grep version)"]
+	if [ "$(git --version | grep version)" ]
 	then 
 		git clone https://github.com/thdelmas/pimpx "$PIMPX"
 	fi
