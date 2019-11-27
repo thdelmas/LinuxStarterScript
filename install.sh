@@ -102,6 +102,14 @@ pimpx_install () {
 
 
 EOF
+echo "## \/ Pimp X uninstall function \/ ##
+
+pimpx_uninstall () {
+	echo 'Good Bye, friend..\n See you soon.'
+	rm -rf '$PIMPX'
+	echo 'BYBYEE'
+}" > "$PIMPX/functions/pimpx_unistall.sh"
+
 
 echo "Default shell: $SHELL"
 pimpx_set_xdg
@@ -125,14 +133,6 @@ else
 	echo "PimpX is now installed"
 fi
 
-
-echo "## \/ Pimp X uninstall function \/ ##
-
-pimpx_uninstall () {
-	echo 'Good Bye, friend..\n See you soon.'
-	rm -rf '$PIMPX'
-	echo 'BYBYEE'
-}" > "$PIMPX/functions/pimpx_unistall.sh"
 
 }
 
