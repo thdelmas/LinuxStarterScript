@@ -110,7 +110,7 @@ export PIMPX="$XDG_CONFIG_HOME/pimpx"
 if [ -d "$PIMPX" ]
 then
 	echo "Pimpx already installed :)"
-	read -p "Update ? (y/n)\n" stdin
+	read -p "Update ? (y/n): " stdin
 	if [ "$stdin"  = 'y' ]
 	then
 		cd "$PIMPX" && git pull && echo "Now up-to-date :)"
