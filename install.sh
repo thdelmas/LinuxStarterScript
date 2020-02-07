@@ -1,12 +1,20 @@
-#!/bin/bash 
-
-##################################################################
-#Script Name	: pimpx.sh
-#Description	: 
-#Args          	:
-#Author       	: Thdelmas
-#Email         	: thedelleg@gmail.com
-###################################################################
+#!/usr/bin/env sh                                                               
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    install.sh                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jerry <jerry@42.fr>                        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/02/07 15:44:11 by jerry             #+#    #+#              #
+#    Updated: 2020/02/07 15:51:00 by jerry            ###   ########.fr        #
+#                                                                              #
+#    Interpreter: GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin18)  #
+#                                                                              #
+#    Usage: install.sh                                                         #
+#    Version: 0.0.0                                                            #
+#                                                                              #
+# **************************************************************************** #
 
 PIMPX_VERSION=1.0.0
 
@@ -45,9 +53,10 @@ pimpx_whereis() {
 pimpx_recover() {
 	if [ "$PIMPX" ]
 	then
-		cd "$PIMPX" &&
-			rm -rf "$PIMPX/core"
-					curl https://gitlab.com/thdelmas/PimpX/-/archive/master/PimpX-master.tar.gz | gunzip | tar -xv && mv "$PIMPX/Pimpx-master" "$PIMPX/core"
+		cd "$PIMPX" && rm -rf "$PIMPX/core"
+		echo "$PIMPX_VERSION" > "$PIMPX/version"
+		curl https://gitlab.com/thdelmas/PimpX/-/archive/master/PimpX-master.tar.gz | gunzip | tar -x && mv "$PIMPX/Pimpx-master" "$PIMPX/core"
+		echo "PimpX Updated to: $PIMPX_VERSION"
 	fi
 }
 
@@ -81,12 +90,13 @@ pimpx_install() {
 		rm -rf "$PIMPX"
 		mkdir "$PIMPX"
 		cd "$PIMPX"
-		mkdir "$PIMPX/functions" "$PIMPX/scripts"
+		mkdir "$PIMPX/functions" "$PIMPX/scripts" "$PIMPX/custom" "$PIMPX/templates" "$PIMPX/log"
 		rm -rf "$PIMPX/core"
-		curl https://gitlab.com/thdelmas/PimpX/-/archive/master/PimpX-master.tar.gz | gunzip | tar -xv && mv "$PIMPX/Pimpx-master" "$PIMPX/core"
+		curl https://gitlab.com/thdelmas/PimpX/-/archive/master/PimpX-master.tar.gz | gunzip | tar -x && mv "$PIMPX/Pimpx-master" "$PIMPX/core"
 	elif [ "$PIMPX" -a -d "$PIMPX" ]
 	then
-		echo 'Pimpx is already installed'
+		echo 'Pimpx is already installed and up-to-date'
+		echo "PimpX version: $PIMPX_VERSION"
 		pimpx_update
 	else
 		echo 'Pimpx not installed'
